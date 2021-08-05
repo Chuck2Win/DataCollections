@@ -10,7 +10,7 @@ import pysubs2 # srt, ass 자막에서 텍스트 뽑아내는 모듈
 import re
 import os
 os.getcwd()
-os.chdir('./data/곰')
+#os.chdir('./data/곰')
 names = os.listdir()
 # 파일 확장자가 smi인 경우, 자막에서 텍스트 뽑아내기
 Total_text_list = []
@@ -21,35 +21,41 @@ for i in names:
         
         try:
             f = open(i,'r',encoding  = 'utf-8')
+            encoding_in = 'utf-8'
             lines = f.readlines()
         except:
             try:
                 f = open(i,'r',encoding  = 'utf-16')
+                encoding_in = 'utf-16'
                 lines = f.readlines()
             except:
                 try:
                     f = open(i,'r',encoding  = 'ansi')
+                    encoding_in = 'ansi'
                     lines = f.readlines()
                 except:
                     try:
                         f = open(i,'r',encoding  = 'cp949')
+                        encoding_in = 'cp949'
                         lines = f.readlines()
                     except:
                         try:
                             f = open(i,'r',encoding  = 'euc-kr')
+                            encoding_in = 'euc-kr'
                             lines = f.readlines()
                         except:
                             continue
             
-        
-        text = []
+        f.close()
+        #text = []
+        F = open('./text/%s.txt','w',encoding='utf-8')
         processed_text = []
         for line in lines:
             line = line.strip()
             sub_line = re.sub(r"\<[^>]*\>","",line)
             if sub_line:
-                processed_text.append(sub_line)
-        Total_text_list.append(processed_text)
+                F.write(sub_line+'\n') # euc-kr로 하면 일본어 등이 카바가 안됨.
+        F.close()
     else:
     # 파일 확장자가 srt인 경우 -> pysubs2 활용
     # encoding 방식 (utf-8, utf-16, ansi, euc-kr)
@@ -71,8 +77,10 @@ for i in names:
                         except:
                             continue
         text_list = []
+        F = open('./text/%s.txt','w',encoding='utf-8')
         for l in lines:
-            text_list.append(l.text)
-            Total_text_list.append(processed_text)
-            
+            sub_line = re.sub('\\N', ' ', l.text)
+            if sub_line:
+                F.write(sub_line+'\n')
+        F.close()
 

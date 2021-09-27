@@ -22,14 +22,17 @@ def selection(string):
                     check1=None
                     check2=None
                     for j in range(i,-1,-1):
-                        print(string[j])
+                        #print(string[j])
                         if string[j]==')':
                             check2=j
                         elif string[j]=='(':
                             check1=j
 
-
+                    if check1 is None or check2 is None:
+                        return string
+                        
                     answer = string[check1+1:check2]
                     break
+
             string = string[:check1]+answer+string[check3+1:]
     return string

@@ -12,3 +12,6 @@ from tab crashed
 chrome_options.add_argument('--no-sandbox')  
 chrome_options.add_argument('--disable-dev-shm-usage')  
 driver = webdriver.Chrome(chrome_options = chrome_options)  
+-------
+서버에는 셀레니움 서버로 설치하지
+https://oslinux.tistory.com/33  

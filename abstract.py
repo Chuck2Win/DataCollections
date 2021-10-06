@@ -36,9 +36,9 @@ if __name__ == '__main__':
     # 셀레니움 
     
     options = webdriver.chrome.options.Options()
-    #options.add_argument('--headless')
-    #options.add_argument('--no-sandbox')
-    #options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     save_dir = r'C:\Users\OK\Desktop\프로젝트&공모전\2021\크롤링\논문\data'
     
     default_url = 'https://www.kci.go.kr/kciportal/po/search/poArtiSearList.kci'

@@ -1,0 +1,22 @@
+# 서버에 크롬 설치
+https://linuxize.com/post/how-to-install-google-chrome-web-browser-on-ubuntu-18-04/ 참조
+
+1. download google chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+2. Install google chrome
+-> sudo apt update  해줌.
+sudo apt install ./google-chrome-stable_current_amd64.deb
+
+3. 버전 확인
+google-chrome --version
+
+4. chrome 버전에 맞는 드라이버 설치 https://sites.google.com/a/chromium.org/chromedriver/
+$ wget -N https://chromedriver.storage.googleapis.com/94.0.4606.41/chromedriver_linux64.zip --no-check-certificate
+# 압축해제
+$ unzip chromedriver_linux64.zip
+
+5. 필요 library 설치
+pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org xlrd
+sudo apt-get install xvfb
+pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pyvirtualdisplay pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org xlrd
